@@ -30,7 +30,7 @@ pipeline {
 
         stage('deploy to minikube') {
             steps {
-                bat 'kubectl apply -f k8s'
+                bat 'kubectl apply -f k8s\\ --validate=false'
             }
         }
 
