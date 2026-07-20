@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('clean workspace') {
             steps {
-                cleanup(disableDeferredWipeout: true, errorBehavior: 'DELETE_FAILED_BUILD_WARNING')
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    cleanWs(disableDeferredWipeout: true)
+                }
                 checkout scm
             }
         }
