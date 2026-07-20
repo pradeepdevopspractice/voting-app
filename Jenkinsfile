@@ -10,12 +10,14 @@ pipeline {
 
         stage('build frontend image') {
             steps {
+                bat 'cd frontend'
                 bat 'docker build -t vote-frontend:latest .'
             }
         }
 
         stage('build backend image') {
             steps {
+                bat 'cd backend'
                 bat 'docker build -t vote-backend:latest .'
             }
         }
